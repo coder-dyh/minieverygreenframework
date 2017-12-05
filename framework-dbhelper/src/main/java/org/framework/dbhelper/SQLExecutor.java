@@ -1,6 +1,8 @@
 package org.framework.dbhelper;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SQLExecutor {
 
@@ -69,6 +71,35 @@ public class SQLExecutor {
     }
 
     /**
+     * 批量添加
+     * @param sql
+     * @param params
+     * @return
+     * @throws SQLException
+     */
+    public int[] executeBatch(String sql,Object params[][]) throws SQLException{
+        int rows[]=null;
+        PreparedStatement ps=null;
+        try {
+            ps=connection.prepareStatement(sql);
+            for(int i=0;i<params.length;i++){
+                //循环设置参数
+                setParameter(params[i],ps);
+            }
+            rows=ps.executeBatch();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(ps);
+            if(autoClose){
+                close(connection);
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * 执行DML操作
      * @param sql
      * @param params
@@ -108,6 +139,67 @@ public class SQLExecutor {
     }
 
     /**
+     * 添加时能够加密
+     * @param sql
+     * @param params
+     * @return Object 返回一个添加成功后加密好的key
+     * @throws SQLException
+     */
+    public Object insert(String sql,Object...params) throws SQLException{
+        PreparedStatement ps=connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+        setParameter(params,ps);
+        Object generatedKey=null;
+        try {
+            ps.executeUpdate();
+            ResultSet rs=ps.getGeneratedKeys();
+            if(rs.next()){
+                generatedKey=rs.getObject(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(ps);
+            if(autoClose){
+                close(connection);
+            }
+        }
+        return generatedKey;
+    }
+
+    /**
+     * 批量添加并加密
+     * @param sql
+     * @param params
+     * @return Object[] 返回一个加密好的钥匙数组
+     * @throws SQLException
+     */
+    public Object[] insertBatch(String sql,Object params[][]) throws SQLException{
+        PreparedStatement ps=connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+        ResultSet rs=null;
+        List generatedKeys=new ArrayList();
+        for(int i=0;i<params.length;i++){
+            setParameter(params[i],ps);
+            ps.addBatch();
+        }
+        try {
+            ps.executeBatch();
+            rs=ps.getGeneratedKeys();
+            while (rs.next()){
+                generatedKeys.add(rs.getObject(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(ps);
+            if (autoClose){
+                close(connection);
+            }
+        }
+
+        return generatedKeys.toArray();
+    }
+
+    /**
      * 关闭连接对象
      * @param rs
      * @throws SQLException
@@ -128,5 +220,13 @@ public class SQLExecutor {
         if(connection!=null){
             connection.close();
         }
+    }
+
+
+    public static void main(String[] args) {
+        Object param[][]=new Object[][]{{2,1,3,4},{3,2}};
+        System.out.println();
+        System.out.println(param[1].length);
+
     }
 }
