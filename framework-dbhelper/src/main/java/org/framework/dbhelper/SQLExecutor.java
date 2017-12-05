@@ -139,10 +139,10 @@ public class SQLExecutor {
     }
 
     /**
-     * 添加时能够加密
+     * 添加成功后返回记录的主键的值
      * @param sql
      * @param params
-     * @return Object 返回一个添加成功后加密好的key
+     * @return Object 返回一个添加成功后返回添加的那条记录的主键的值
      * @throws SQLException
      */
     public Object insert(String sql,Object...params) throws SQLException{
@@ -167,10 +167,10 @@ public class SQLExecutor {
     }
 
     /**
-     * 批量添加并加密
+     * 批量添加并返回主键的值
      * @param sql
      * @param params
-     * @return Object[] 返回一个加密好的钥匙数组
+     * @return Object[] 返回一个包含所有主键的值Object[]数组
      * @throws SQLException
      */
     public Object[] insertBatch(String sql,Object params[][]) throws SQLException{
