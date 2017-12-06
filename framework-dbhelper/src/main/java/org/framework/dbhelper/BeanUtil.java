@@ -119,7 +119,7 @@ public class BeanUtil {
         if(value!=null){
             columnName=rsmd.getColumnLabel(columnIndex);
         }
-        TypeConvert.convert(rs,columnName,clazz);
+        value=TypeConvert.convert(rs,columnName,clazz);
         return value;
     }
 
