@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/framework.iml" filepath="$PROJECT_DIR$/framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework-beans/framework-beans.iml" filepath="$PROJECT_DIR$/framework-beans/framework-beans.iml" />
       <module fileurl="file://$PROJECT_DIR$/framework-dbhelper/framework-dbhelper.iml" filepath="$PROJECT_DIR$/framework-dbhelper/framework-dbhelper.iml" />
     </modules>
   </component>

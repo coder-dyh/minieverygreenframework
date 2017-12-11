@@ -11,6 +11,7 @@
     
     <modules>
         <module>framework-dbhelper</module>
+        <module>framework-beans</module>
     </modules>
 
 
