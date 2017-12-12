@@ -8,19 +8,30 @@ public class PropertyInject implements org.framework.beans.Inf.Inject{
 
 
     @Override
-    public void inject(String className, Class<?> clazz) throws IntrospectionException, IllegalAccessException, InstantiationException {
+    public void inject(Object target, BeanFactory beanFactory) throws IllegalAccessException{
+        analyseField(target,beanFactory);
+    }
 
-            Field[] fields=clazz.getDeclaredFields();
-            for(Field f: fields){
-                if(f.isAnnotationPresent(Inject.class)){
-                    f.setAccessible(true);
-                    String injectName=f.getAnnotation(Inject.class).name();
-                    Class<?> cls=BeanFactory.getComponentNameClass().get(injectName);
-                    //为属性注入实现类
-                    f.set(BeanFactory.getBean(className),BeanFactory.getBean(injectName));
-                    inject(injectName,cls);
-                }
+    /**
+     * 递归遍历所有属性并为需要注入的属性执行注入
+     * @param target
+     * @param beanFactory
+     * @throws IllegalAccessException
+     */
+    private void analyseField(Object target,BeanFactory beanFactory) throws IllegalAccessException{
+        Class<?> clazz=target.getClass();
+        Field[] fields=clazz.getDeclaredFields();
+        String injectName=null;
+        Object obj=null;
+        for(Field field: fields){
+            field.setAccessible(true);
+            if(field.isAnnotationPresent(Inject.class)){
+                injectName=field.getAnnotation(Inject.class).name();
+                obj=beanFactory.getBean(injectName);
+                field.set(target,obj);
+                analyseField(obj,beanFactory);
             }
+        }
 
     }
 }

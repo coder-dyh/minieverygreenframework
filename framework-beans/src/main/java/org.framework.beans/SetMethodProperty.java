@@ -2,28 +2,42 @@ package org.framework.beans;
 
 
 
+import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class SetMethodProperty implements org.framework.beans.Inf.Inject{
 
     @Override
-    public void inject(String target, Class<?> clazz)
-            throws IntrospectionException, IllegalAccessException, InstantiationException,InvocationTargetException {
+    public void inject(Object target, BeanFactory beanFactory)
+            throws IntrospectionException,IllegalAccessException,InvocationTargetException{
+        analyseSetMethod(target,beanFactory);
+    }
 
-            Method[] methods=clazz.getDeclaredMethods();
-            for(Method m: methods){
-                if(m.isAnnotationPresent(Inject.class)){
-                    m.setAccessible(true);
-                    String injectName=m.getAnnotation(Inject.class).name();
-                    Class<?> cls=BeanFactory.getComponentNameClass().get(injectName);
-                    //为set方法注入实现类
-                    m.invoke(BeanFactory.getBean(injectName),cls.newInstance());
-                    inject(injectName,cls);
-                }
+    /**
+     * 递归遍历所有的Set方法并给需要注入的Set方法注入参数
+     * @param target
+     * @param beanFactory
+     * @throws IntrospectionException
+     * @throws IllegalAccessException
+     * @throws InvocationTargetException
+     */
+    private void analyseSetMethod(Object target, BeanFactory beanFactory)
+            throws IntrospectionException,IllegalAccessException,InvocationTargetException{
+        BeanInfo beanInfo= Introspector.getBeanInfo(target.getClass(),Object.class);
+        PropertyDescriptor[] pds=beanInfo.getPropertyDescriptors();
+        for(PropertyDescriptor pd : pds){
+            Method setMethod=pd.getWriteMethod();
+            if(setMethod.isAnnotationPresent(Inject.class)){
+                String injectName=setMethod.getAnnotation(Inject.class).name();
+                Object obj=beanFactory.getBean(injectName);
+                setMethod.invoke(target,obj);
+                analyseSetMethod(obj,beanFactory);
             }
-
+        }
 
     }
 }

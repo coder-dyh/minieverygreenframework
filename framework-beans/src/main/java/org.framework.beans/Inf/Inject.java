@@ -1,5 +1,7 @@
 package org.framework.beans.Inf;
 
+import org.framework.beans.BeanFactory;
+
 import java.beans.IntrospectionException;
 import java.lang.reflect.InvocationTargetException;
 
@@ -9,9 +11,13 @@ import java.lang.reflect.InvocationTargetException;
 public interface Inject {
 
     /**
-     * 注入行为
-     * @param target  需要注入的目标对象
-     * @param clazz
+     * 注入的抽象方法
+     * @param target
+     * @param beanFactory
+     * @throws IntrospectionException
+     * @throws IllegalAccessException
+     * @throws InstantiationException
+     * @throws InvocationTargetException
      */
-    void inject(String target, Class<?> clazz) throws IntrospectionException,IllegalAccessException,InstantiationException,InvocationTargetException;
+    void inject(Object target, BeanFactory beanFactory) throws IntrospectionException,IllegalAccessException,InstantiationException,InvocationTargetException;
 }
