@@ -12,6 +12,7 @@
     <modules>
         <module>framework-dbhelper</module>
         <module>framework-beans</module>
+        <module>framework-mvc</module>
     </modules>
 
 
@@ -22,7 +23,7 @@
 
         <!--setting version-->
 
-        <mysql-version>5.1.38</mysql-version>
+        <!--<mysql-version>5.1.38</mysql-version>-->
 
     </properties>
 
@@ -37,21 +38,59 @@
                     <target>1.8</target>
                     <source>1.8</source>
                     <encoding>utf-8</encoding>
+                    <compilerArgs>-parameters</compilerArgs>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
     <!--subclasses depend on demand-->
-    <dependencyManagement>
         <dependencies>
 
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
+                <version>5.1.38</version>
             </dependency>
 
+            <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>3.1.0</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/javax.servlet.jsp/jsp-api -->
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>2.1</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.8.3</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>2.3.1</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.json/json -->
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>20090211</version>
+            </dependency>
+
+
         </dependencies>
-    </dependencyManagement>
+
 </project>

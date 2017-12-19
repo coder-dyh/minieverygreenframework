@@ -8,12 +8,17 @@
         <outputRelativeToContentRoot value="true" />
         <module name="framework-beans" />
         <module name="framework-dbhelper" />
+        <module name="framework-mvc" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="framework" target="1.8" />
       <module name="framework-beans" target="1.8" />
       <module name="framework-dbhelper" target="1.8" />
+      <module name="framework-mvc" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="-parameters" />
   </component>
 </project>
