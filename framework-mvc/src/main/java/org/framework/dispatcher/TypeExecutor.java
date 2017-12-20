@@ -15,19 +15,23 @@ import java.util.ServiceLoader;
  */
 public class TypeExecutor {
 
-    private static Iterator<TypeConvert> it;
-    private static List<TypeConvert> list=new ArrayList<>();
+    private Iterator<TypeConvert> it;
+    private List<TypeConvert> list=new ArrayList<>();
 
 
     private static ServiceLoader serviceLoader;
 
-    static {
+//    static {
+//        serviceLoader = ServiceLoader.load(TypeConvert.class);
+//        it= serviceLoader.iterator();
+//    }
+
+    public TypeExecutor(){
         serviceLoader = ServiceLoader.load(TypeConvert.class);
         it= serviceLoader.iterator();
     }
 
     public Object execute(Parameter parameter) throws InstantiationException, IllegalAccessException, InvocationTargetException {
-        serviceLoader.reload();
         Object object=null;
         while(it.hasNext()){
             object=it.next().convert(parameter,this);
@@ -35,7 +39,6 @@ public class TypeExecutor {
                 return object;
             }
         }
-
         return object;
     }
 

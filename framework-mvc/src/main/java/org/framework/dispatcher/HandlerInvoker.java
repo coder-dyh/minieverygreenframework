@@ -23,8 +23,9 @@ public class HandlerInvoker {
                 (Map<String, HandlerDefinition>) req.getServletContext().getAttribute(RequestDispatcher.CONTEXTMAPING);
         HandlerDefinition definition=requestMap.get(servletPath);
         if(definition!=null){
+            Object[] params=null;
             try {
-                Object[] params=parameterConvert(req,resp,definition.getMethod());
+                params=parameterConvert(req,resp,definition.getMethod());
                 definition.getMethod().invoke(definition.getClazz().newInstance(),params);
             }catch (Exception e){
                 throw new RuntimeException(e);
@@ -44,8 +45,6 @@ public class HandlerInvoker {
             throws InvocationTargetException,IllegalAccessException,InstantiationException{
         Parameter[] params=method.getParameters();
         Object[] needParams=new Object[params.length];
-//        Map<String,Object[]> paramsMap=new HashMap<>();
-//        paramsMap.put(method.getName(),params);
         for(int i=0;i<params.length;i++){
             Parameter parameter=params[i];
             needParams[i]=new TypeExecutor().execute(parameter);

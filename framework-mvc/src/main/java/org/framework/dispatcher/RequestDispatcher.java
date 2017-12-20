@@ -58,11 +58,16 @@ public class RequestDispatcher extends HttpServlet {
         List<FilterDefinition> filterDefinitionList=checkFilterMapping(filters);
 
         if(filterDefinitionList!=null && filterDefinitionList.size()>0){
+            //如果有过滤器先执行过滤器中的方法
             FilterChain chain=new FilterChain(new FilterAdaptor(filterDefinitionList).getFilterInstances());
             chain.execute(req,resp,chain);
-            HandlerInvoker.invoker(req,resp);
+            if(!req.getServletPath().equals("/favicon.ico")){
+                HandlerInvoker.invoker(req,resp);
+            }
         }else{
-            HandlerInvoker.invoker(req,resp);
+            if(!req.getServletPath().equals("/favicon.ico")){
+                HandlerInvoker.invoker(req,resp);
+            }
         }
     }
 
@@ -83,8 +88,8 @@ public class RequestDispatcher extends HttpServlet {
      * @return
      */
     private List<FilterDefinition> checkFilterMapping(List<FilterDefinition> filters){
+        List<FilterDefinition> list=new ArrayList<>();
         if(filters.size()>0){
-            List<FilterDefinition> list=new ArrayList<>();
             String servletPath=ActionContext.getActionContext().getServletPath();
             for(FilterDefinition fd : filters){
                 if(fd.getRequestMapName().equals(servletPath) || fd.getRequestMapName().equals("/")){
@@ -92,9 +97,9 @@ public class RequestDispatcher extends HttpServlet {
                 }
             }
             //对集合中的过滤器按注解中的order值进行排序
-            sortOrders(list);
+            list=sortOrders(list);
         }
-        return null;
+        return list;
     }
 
     /**

@@ -13,7 +13,6 @@ public class SimpleTypeConvert implements TypeConvert{
     public Object convert(Parameter parameter, TypeExecutor executor)
             throws IllegalAccessException,InvocationTargetException,InstantiationException{
 
-
         Object obj=parameter.getType().isArray() ? ActionContext.getActionContext()
                 .getRequest().getParameterValues(parameter.getName()) : ActionContext.getActionContext()
                 .getRequest().getParameter(parameter.getName());
