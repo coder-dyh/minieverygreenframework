@@ -43,6 +43,7 @@ public class HandlerMapping {
                 (Map<String,HandlerDefinition>)config.getServletContext().getAttribute(RequestDispatcher.CONTEXTMAPING);
         List<FilterDefinition> filterList=
                 (List<FilterDefinition>) config.getServletContext().getAttribute(RequestDispatcher.FILTERLIST);
+
         for(String s : pathList){
             HandlerDefinition definition=new HandlerDefinition();
             Class<?> clazz=Class.forName(s);
@@ -61,6 +62,7 @@ public class HandlerMapping {
                 }
             }
         }
+
     }
 
     /**
@@ -70,6 +72,7 @@ public class HandlerMapping {
      */
     private void createFilterDefinition(Class<?> clazz,List<FilterDefinition> filterList) {
         if(clazz.isAnnotationPresent(FilterMapping.class)){
+
             String value=null;
             int order=1;
             FilterDefinition fd=new FilterDefinition();
@@ -86,6 +89,12 @@ public class HandlerMapping {
             filterList.add(fd);
         }
     }
+
+
+
+
+
+
 
     /**
      * 判断class对象是否有相对应的注解

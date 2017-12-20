@@ -33,6 +33,10 @@ public class RequestDispatcher extends HttpServlet {
      * 用于存放所有的实现filter接口的所有实现类的class对象
      */
     private static List<FilterDefinition> filterList=new ArrayList<>();
+    /**
+     * 用于存放过滤链的过滤顺序的order值
+     */
+    private static List orderList=new ArrayList();
 
     protected final static String CONTEXTMAPING="contextMap";
     protected final static String FILTERLIST="filterList";
@@ -48,9 +52,11 @@ public class RequestDispatcher extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         setActionContext(req,resp);
+
         //检查该请求是否有相关过滤器拦截
         List<FilterDefinition> filters=(List<FilterDefinition>) req.getServletContext().getAttribute(FILTERLIST);
         List<FilterDefinition> filterDefinitionList=checkFilterMapping(filters);
+
         if(filterDefinitionList!=null && filterDefinitionList.size()>0){
             FilterChain chain=new FilterChain(new FilterAdaptor(filterDefinitionList).getFilterInstances());
             chain.execute(req,resp,chain);
@@ -59,6 +65,7 @@ public class RequestDispatcher extends HttpServlet {
             HandlerInvoker.invoker(req,resp);
         }
     }
+
 
     /**
      * 创建存储请求响应等信息的行为上下文
@@ -84,51 +91,24 @@ public class RequestDispatcher extends HttpServlet {
                     list.add(fd);
                 }
             }
-            //对过滤器中的元素进行排序
-            List<FilterDefinition> filterDefinitionList=sortFilter(list);
-            return filterDefinitionList;
+            //对集合中的过滤器按注解中的order值进行排序
+            sortOrders(list);
         }
         return null;
     }
 
-    private List<FilterDefinition> sortFilter(List<FilterDefinition> list){
-        if(list.size()==1 || list.size()==0){
-            return list;
-        }else{
-            int[] order=new int[list.size()];
-            for(int i=0;i<list.size();i++){
-                //取出每一个元素的order放入数组中
-                order[i]=list.get(i).getOrder();
-            }
-            int[] afterBubbling=bubbling(order);
-            List<FilterDefinition> filterDefinitionList=new ArrayList<>();
-            for(int i=0;i<afterBubbling.length;i++){
-                filterDefinitionList.add(list.get(afterBubbling[i]-1));
-            }
-            return filterDefinitionList;
-        }
-
-    }
-
     /**
-     * 对数组中的数据进行排序
-     * @param a
-     * @return int[] 一个已经排好序的数组
+     * 对集合中的过滤器按注解中的order值进行排序
+     * @param list
+     * @return List<FilterDefinition> 返回一个已经排好序的集合
      */
-    private int[] bubbling(int[] a){
-        //冒泡排序
-        for (int k = 0; k < a.length - 1; k++) {
-            for (int j = k + 1; j < a.length; j++) { // 升序把<改成>
-                if (a[k] > a[j]) {
-                    int temp = a[k];
-                    a[k] = a[j];
-                    a[j] = temp;
-                }
-            }
+    private List<FilterDefinition> sortOrders(List<FilterDefinition> list){
+        for(int i=0;i<list.size();i++){
+            int j=list.get(i).getOrder();
+            list.set(j-1,list.get(i));
         }
-        return a;
+        return list;
     }
-
 
 
 

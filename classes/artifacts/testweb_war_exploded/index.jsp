@@ -13,7 +13,7 @@
   <body>
     <form action="login">
       name:<input type="text" name="name" /><br />
-      <!--name2:<input type="text" name="name" /><br />-->
+      name2:<input type="text" name="name" /><br />
       <input type="submit" value="commit">
     </form>
   </body>

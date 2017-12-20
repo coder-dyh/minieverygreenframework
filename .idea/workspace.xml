@@ -7,44 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3401da08-9818-4c6e-87cc-d5cf0951bf02" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/anno/FilterMapping.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/dispatcher/BeanTypeConvert.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/dispatcher/FilterDefinition.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/dispatcher/ServletAPIConvert.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/dispatcher/SimpleTypeConvert.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/dispatcher/TypeConvert.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/dispatcher/TypeExecutor.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/filter/Filter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/filter/FilterAdaptor.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/filter/FilterChain.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/filter/impl/FilterAbstract.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/testweb/filter/LoginFilter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/testweb/filter/LoginFilter2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/production/testweb/org/testweb/filter/LoginFilter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/production/testweb/org/testweb/filter/LoginFilter2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/META-INF/services/org.framework.dispatcher.TypeConvert" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework-beans/src/main/java/org.framework.beans/test/ScanUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework-mvc/src/main/resources/META-INF/services/org.framework.dispatcher.TypeConvert" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/framework-mvc/src/main/resources/META-INF.services/org.framework.dispatcher.TypeConvert" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/META-INF.services/org.framework.dispatcher.TypeConvert" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/dispatcher/ActionContext.class" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/dispatcher/ActionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/dispatcher/HandlerInvoker.class" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/dispatcher/HandlerInvoker.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/dispatcher/HandlerMapping.class" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/dispatcher/HandlerMapping.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/dispatcher/RequestDispatcher.class" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/framework/dispatcher/RequestDispatcher.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/testweb/servlet/LoginHandler.class" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/WEB-INF/classes/org/testweb/servlet/LoginHandler.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/production/testweb/org/testweb/servlet/LoginHandler.class" afterPath="$PROJECT_DIR$/classes/production/testweb/org/testweb/servlet/LoginHandler.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/index.jsp" afterPath="$PROJECT_DIR$/classes/artifacts/testweb_war_exploded/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework-beans/src/main/java/org.framework.beans/InjectExecutor.java" afterPath="$PROJECT_DIR$/framework-beans/src/main/java/org.framework.beans/InjectExecutor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/ActionContext.java" afterPath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/ActionContext.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/BeanTypeConvert.java" afterPath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/BeanTypeConvert.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/HandlerInvoker.java" afterPath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/HandlerInvoker.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/HandlerMapping.java" afterPath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/HandlerMapping.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/RequestDispatcher.java" afterPath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/RequestDispatcher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/ServletAPIConvert.java" afterPath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/ServletAPIConvert.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/SimpleTypeConvert.java" afterPath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/SimpleTypeConvert.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/TypeExecutor.java" afterPath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/TypeExecutor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/FilterAdaptor.java" afterPath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/FilterAdaptor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/FilterChain.java" afterPath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/FilterChain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/impl/FilterAbstract.java" afterPath="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/impl/FilterAbstract.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/framework-dbhelper/target/" />
@@ -62,15 +33,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FilterChain.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/FilterChain.java">
+      <file leaf-file-name="HandlerMapping.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/HandlerMapping.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding>
-                <element signature="e#510#511#0" expanded="true" />
-                <element signature="e#550#551#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="236">
+              <caret line="47" column="42" lean-forward="false" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,74 +46,9 @@
       <file leaf-file-name="RequestDispatcher.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/RequestDispatcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="85" column="13" lean-forward="true" selection-start-line="85" selection-start-column="13" selection-end-line="85" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HandlerMapping.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/HandlerMapping.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="73" column="24" lean-forward="true" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Filter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/Filter.java">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="138">
-              <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FilterAdaptor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/FilterAdaptor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="21" column="14" lean-forward="false" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-              <folding>
-                <element signature="e#355#356#0" expanded="true" />
-                <element signature="e#385#386#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FilterAbstract.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/impl/FilterAbstract.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../testweb/src/org/testweb/filter/LoginFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="40" lean-forward="false" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginFilter2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../testweb/src/org/testweb/filter/LoginFilter2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -219,8 +122,6 @@
         <option value="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/anno/FilterMapping.java" />
         <option value="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/FilterDefinition.java" />
         <option value="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/Filter.java" />
-        <option value="$PROJECT_DIR$/../testweb/web/index.jsp" />
-        <option value="$PROJECT_DIR$/../testweb/src/org/testweb/servlet/LoginHandler.java" />
         <option value="$PROJECT_DIR$/framework-beans/src/main/java/org.framework.beans/test/ScanUtil.java" />
         <option value="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/ServletAPIConvert.java" />
         <option value="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/ActionContext.java" />
@@ -229,12 +130,14 @@
         <option value="$PROJECT_DIR$/framework-mvc/src/main/resources/META-INF/.services/org.framework.dispatcher.TypeConvert" />
         <option value="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/TypeExecutor.java" />
         <option value="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/HandlerInvoker.java" />
-        <option value="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/HandlerMapping.java" />
         <option value="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/FilterAdaptor.java" />
         <option value="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/impl/FilterAbstract.java" />
         <option value="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/FilterChain.java" />
         <option value="$PROJECT_DIR$/../testweb/src/org/testweb/filter/LoginFilter.java" />
         <option value="$PROJECT_DIR$/../testweb/src/org/testweb/filter/LoginFilter2.java" />
+        <option value="$PROJECT_DIR$/../testweb/src/org/testweb/servlet/LoginHandler.java" />
+        <option value="$PROJECT_DIR$/../testweb/web/index.jsp" />
+        <option value="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/HandlerMapping.java" />
         <option value="$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/RequestDispatcher.java" />
       </list>
     </option>
@@ -366,59 +269,6 @@
               <item name="org" type="462c0819:PsiDirectoryNode" />
               <item name="framework" type="462c0819:PsiDirectoryNode" />
               <item name="dispatcher" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="framework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="framework" type="462c0819:PsiDirectoryNode" />
-              <item name="framework-mvc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-              <item name="framework" type="462c0819:PsiDirectoryNode" />
-              <item name="filter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="framework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="framework" type="462c0819:PsiDirectoryNode" />
-              <item name="framework-mvc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-              <item name="framework" type="462c0819:PsiDirectoryNode" />
-              <item name="filter" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="framework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testweb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="framework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testweb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="framework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testweb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="framework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testweb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-              <item name="testweb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="framework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testweb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-              <item name="testweb" type="462c0819:PsiDirectoryNode" />
-              <item name="filter" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -843,7 +693,7 @@
       <workItem from="1513728336061" duration="10701000" />
       <workItem from="1513748408381" duration="1075000" />
       <workItem from="1513749571421" duration="11489000" />
-      <workItem from="1513766079967" duration="449000" />
+      <workItem from="1513766079967" duration="5170000" />
     </task>
     <task id="LOCAL-00001" summary="增加了专门用于处理对象的beans容器">
       <created>1512952363280</created>
@@ -866,11 +716,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513687521578</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="修复了每次访问都只能访问一次，后面访问返回null值或者&quot; &quot;值的bug、修复了加载类型处理器SPI无法加载的问题，增加了过滤器的实现部分（还未优化）">
+      <created>1513766697667</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1513766697667</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137570000" />
+    <option name="totallyTimeSpent" value="142291000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -915,38 +772,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867134" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6685315" sideWeight="0.5028612" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867134" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45734265" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867134" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867134" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867134" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867134" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.124475524" sideWeight="0.49713877" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2732475" sideWeight="0.4918415" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867134" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26037195" sideWeight="0.5081585" order="5" side_tool="true" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -984,7 +809,8 @@
     <MESSAGE value="增加了专门用于处理对象的beans容器" />
     <MESSAGE value="重新实现了IOC容器，添加了容器的初始化方法和关闭容器的方法" />
     <MESSAGE value="添加了MVC模块，但是存在bug，晚上更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加了MVC模块，但是存在bug，晚上更新" />
+    <MESSAGE value="修复了每次访问都只能访问一次，后面访问返回null值或者&quot; &quot;值的bug、修复了加载类型处理器SPI无法加载的问题，增加了过滤器的实现部分（还未优化）" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复了每次访问都只能访问一次，后面访问返回null值或者&quot; &quot;值的bug、修复了加载类型处理器SPI无法加载的问题，增加了过滤器的实现部分（还未优化）" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1000,12 +826,6 @@
           <line>26</line>
           <properties />
           <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/RequestDispatcher.java</url>
-          <line>54</line>
-          <properties />
-          <option name="timeStamp" value="54" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="55" />
@@ -1207,20 +1027,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../testweb/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="18" lean-forward="false" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../testweb/src/org/testweb/servlet/LoginHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="12" column="33" lean-forward="true" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/TypeConvert.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -1241,6 +1047,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1283,7 +1090,7 @@
         <state relative-caret-position="226">
           <caret line="25" column="16" lean-forward="true" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1298,27 +1105,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../testweb/src/org/testweb/filter/LoginFilter2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
+        <state relative-caret-position="184">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../testweb/src/org/testweb/filter/LoginFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="40" lean-forward="false" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/impl/FilterAbstract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1327,8 +1118,8 @@
         <state relative-caret-position="368">
           <caret line="21" column="14" lean-forward="false" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
           <folding>
-            <element signature="e#355#356#0" expanded="true" />
-            <element signature="e#385#386#0" expanded="true" />
+            <element signature="e#355#356#0" expanded="false" />
+            <element signature="e#385#386#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1341,29 +1132,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/impl/FilterAbstract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../testweb/src/org/testweb/filter/LoginFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="40" lean-forward="false" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/filter/FilterChain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
+        <state relative-caret-position="421">
           <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="e#510#511#0" expanded="true" />
-            <element signature="e#550#551#0" expanded="true" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../testweb/src/org/testweb/servlet/LoginHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../testweb/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/HandlerMapping.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="73" column="24" lean-forward="true" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
+        <state relative-caret-position="236">
+          <caret line="47" column="42" lean-forward="false" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/framework-mvc/src/main/java/org/framework/dispatcher/RequestDispatcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="85" column="13" lean-forward="true" selection-start-line="85" selection-start-column="13" selection-end-line="85" selection-end-column="13" />
+        <state relative-caret-position="138">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1422,7 +1242,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>testweb</last-edited>
+          <last-edited>framework</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
