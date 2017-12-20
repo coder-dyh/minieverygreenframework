@@ -16,12 +16,15 @@ public class FilterChain {
         executeIterator();
     }
 
+    /**
+     * 将集合中的元素迭代到迭代器中
+     */
     public void executeIterator(){
         it=objectList.iterator();
     }
 
     public void execute(HttpServletRequest req, HttpServletResponse resp,FilterChain chain){
-        if(it.hasNext()){
+        while (it.hasNext()){
             it.next().doFilter(req,resp,this);
         }
     }

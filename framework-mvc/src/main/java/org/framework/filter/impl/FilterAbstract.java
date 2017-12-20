@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 public class FilterAbstract implements Filter{
 
-    static {
-        HttpServletRequest req=ActionContext.getRequest();
-        HttpServletResponse resp=ActionContext.getResponse();
-    }
+    private HttpServletRequest req;
+    private HttpServletResponse resp;
+
+   public FilterAbstract(){
+
+   }
 
     protected void before(){
 

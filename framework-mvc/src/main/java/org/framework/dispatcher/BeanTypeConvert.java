@@ -13,7 +13,10 @@ public class BeanTypeConvert implements TypeConvert{
             throws InvocationTargetException,InstantiationException,IllegalAccessException{
         Object obj=parameter.getType().newInstance();
         try {
-            BeanUtils.populate(obj,ActionContext.getRequest().getParameterMap());
+            BeanUtils.populate(obj,ActionContext.getActionContext().getRequest().getParameterMap());
+            if(obj==null || obj.equals("")){
+                executor.execute(parameter);
+            }
             return obj;
         } catch (Throwable e) {
             return executor.execute(parameter);

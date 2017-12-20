@@ -1,6 +1,8 @@
 package org.framework.dispatcher;
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
@@ -16,24 +18,24 @@ public class TypeExecutor {
     private static Iterator<TypeConvert> it;
     private static List<TypeConvert> list=new ArrayList<>();
 
-    /*static {
-        it= ServiceLoader.load(TypeConvert.class).iterator();
-        System.out.println(it.hasNext());
-    }*/
+
+    private static ServiceLoader serviceLoader;
 
     static {
-        list.add(new SimpleTypeConvert());
-        list.add(new BeanTypeConvert());
-        list.add(new ServletAPIConvert());
-        it=list.iterator();
+        serviceLoader = ServiceLoader.load(TypeConvert.class);
+        it= serviceLoader.iterator();
     }
 
-
     public Object execute(Parameter parameter) throws InstantiationException, IllegalAccessException, InvocationTargetException {
+        serviceLoader.reload();
         Object object=null;
-        if(it.hasNext()){
+        while(it.hasNext()){
             object=it.next().convert(parameter,this);
+            if(object!=null){
+                return object;
+            }
         }
+
         return object;
     }
 

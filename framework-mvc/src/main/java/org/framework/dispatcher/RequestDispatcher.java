@@ -45,14 +45,13 @@ public class RequestDispatcher extends HttpServlet {
         handlerMapping.scan(config);
     }
 
-
-
-
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         setActionContext(req,resp);
-        List<FilterDefinition> filterDefinitionList=checkFilterMapping();
-        if(filterDefinitionList!=null){
+        //检查该请求是否有相关过滤器拦截
+        List<FilterDefinition> filters=(List<FilterDefinition>) req.getServletContext().getAttribute(FILTERLIST);
+        List<FilterDefinition> filterDefinitionList=checkFilterMapping(filters);
+        if(filterDefinitionList!=null && filterDefinitionList.size()>0){
             FilterChain chain=new FilterChain(new FilterAdaptor(filterDefinitionList).getFilterInstances());
             chain.execute(req,resp,chain);
             HandlerInvoker.invoker(req,resp);
@@ -67,50 +66,55 @@ public class RequestDispatcher extends HttpServlet {
      * @param resp
      */
     private void setActionContext(HttpServletRequest req, HttpServletResponse resp){
-        ActionContext.setServletPath(req.getServletPath());
-        ActionContext.setRequest(req);
-        ActionContext.setResponse(resp);
+        ActionContext.getActionContext().setRequest(req);
+        ActionContext.getActionContext().setResponse(resp);
+        ActionContext.getActionContext().setServletPath(req.getServletPath());
     }
 
     /**
      * 检查对应请求是否有对应的过滤器拦截
      * @return
      */
-    private List<FilterDefinition> checkFilterMapping(){
-        if(filterList.size()>0){
+    private List<FilterDefinition> checkFilterMapping(List<FilterDefinition> filters){
+        if(filters.size()>0){
             List<FilterDefinition> list=new ArrayList<>();
-            String servletPath=ActionContext.getServletPath();
-            for(FilterDefinition fd : filterList){
-                if(fd.getRequestMapName().equals(servletPath)){
+            String servletPath=ActionContext.getActionContext().getServletPath();
+            for(FilterDefinition fd : filters){
+                if(fd.getRequestMapName().equals(servletPath) || fd.getRequestMapName().equals("/")){
                     list.add(fd);
                 }
             }
             //对过滤器中的元素进行排序
             List<FilterDefinition> filterDefinitionList=sortFilter(list);
-            return list;
+            return filterDefinitionList;
         }
         return null;
     }
 
     private List<FilterDefinition> sortFilter(List<FilterDefinition> list){
-
-        if(list.size()==1){
+        if(list.size()==1 || list.size()==0){
             return list;
         }else{
             int[] order=new int[list.size()];
             for(int i=0;i<list.size();i++){
+                //取出每一个元素的order放入数组中
                 order[i]=list.get(i).getOrder();
             }
             int[] afterBubbling=bubbling(order);
             List<FilterDefinition> filterDefinitionList=new ArrayList<>();
             for(int i=0;i<afterBubbling.length;i++){
-                filterDefinitionList.add(list.get(afterBubbling[i]));
+                filterDefinitionList.add(list.get(afterBubbling[i]-1));
             }
             return filterDefinitionList;
         }
 
     }
 
+    /**
+     * 对数组中的数据进行排序
+     * @param a
+     * @return int[] 一个已经排好序的数组
+     */
     private int[] bubbling(int[] a){
         //冒泡排序
         for (int k = 0; k < a.length - 1; k++) {

@@ -74,10 +74,10 @@ public class HandlerMapping {
             int order=1;
             FilterDefinition fd=new FilterDefinition();
             if(clazz.getAnnotation(FilterMapping.class).value()!=null){
-                value="/"+clazz.getAnnotation(FilterMapping.class).value();
+                value=clazz.getAnnotation(FilterMapping.class).value();
                 order=clazz.getAnnotation(FilterMapping.class).order();
             }else{
-                value="/"+ FirstCharToLowerCase.toLowerCaseFirstOne(clazz.getSimpleName());
+                value=FirstCharToLowerCase.toLowerCaseFirstOne(clazz.getSimpleName());
                 order=clazz.getAnnotation(FilterMapping.class).order();
             }
             fd.setRequestMapName(value);

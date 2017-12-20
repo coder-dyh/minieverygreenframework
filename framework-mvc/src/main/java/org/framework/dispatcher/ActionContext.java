@@ -5,10 +5,9 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ActionContext {
 
-    private static HttpServletRequest request;
-    private static HttpServletResponse response;
-    private static String servletPath;
-
+    private  HttpServletRequest request;
+    private  HttpServletResponse response;
+    private  String servletPath;
 
     public static final ThreadLocal<ActionContext> actionContextThreadLocal=new ThreadLocal<ActionContext>();
 
@@ -19,27 +18,27 @@ public class ActionContext {
         return actionContextThreadLocal.get();
     }
 
-    public static HttpServletRequest getRequest() {
+    public HttpServletRequest getRequest() {
         return request;
     }
 
-    public static void setRequest(HttpServletRequest request) {
-        ActionContext.request = request;
+    public void setRequest(HttpServletRequest request) {
+        this.request = request;
     }
 
-    public static HttpServletResponse getResponse() {
+    public HttpServletResponse getResponse() {
         return response;
     }
 
-    public static void setResponse(HttpServletResponse response) {
-        ActionContext.response = response;
+    public void setResponse(HttpServletResponse response) {
+        this.response = response;
     }
 
-    public static String getServletPath() {
+    public String getServletPath() {
         return servletPath;
     }
 
-    public static void setServletPath(String servletPath) {
-        ActionContext.servletPath = servletPath;
+    public void setServletPath(String servletPath) {
+        this.servletPath = servletPath;
     }
 }

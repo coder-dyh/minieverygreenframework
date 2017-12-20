@@ -17,11 +17,19 @@ public class FilterAdaptor {
     public FilterAdaptor(List<FilterDefinition> list){
         this.list=list;
     }
+
+    /**
+     * 返回过滤器实例
+     * @return
+     */
     public List<Filter> getFilterInstances(){
         createInstance();
         return filterInstances;
     }
 
+    /**
+     * 创建过滤器实例
+     */
     private void createInstance(){
         for(FilterDefinition fd : list){
             try {

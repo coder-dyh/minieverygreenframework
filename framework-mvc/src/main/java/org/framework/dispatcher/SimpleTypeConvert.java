@@ -12,8 +12,10 @@ public class SimpleTypeConvert implements TypeConvert{
     @Override
     public Object convert(Parameter parameter, TypeExecutor executor)
             throws IllegalAccessException,InvocationTargetException,InstantiationException{
-        Object obj=parameter.getType().isArray() ? ActionContext
-                .getRequest().getParameterValues(parameter.getName()) : ActionContext
+
+
+        Object obj=parameter.getType().isArray() ? ActionContext.getActionContext()
+                .getRequest().getParameterValues(parameter.getName()) : ActionContext.getActionContext()
                 .getRequest().getParameter(parameter.getName());
         if(obj==null){
             executor.execute(parameter);

@@ -1,8 +1,5 @@
 package org.framework.dispatcher;
 
-
-
-
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 
@@ -36,7 +33,6 @@ public class HandlerInvoker {
 
     }
 
-
     /**
      * 处理类型转换的工具类
      * @param req
@@ -48,32 +44,15 @@ public class HandlerInvoker {
             throws InvocationTargetException,IllegalAccessException,InstantiationException{
         Parameter[] params=method.getParameters();
         Object[] needParams=new Object[params.length];
-        Map<String,Object[]> paramsMap=new HashMap<>();
-        paramsMap.put(method.getName(),params);
+//        Map<String,Object[]> paramsMap=new HashMap<>();
+//        paramsMap.put(method.getName(),params);
         for(int i=0;i<params.length;i++){
-            //setProperty(req, resp, params[i], needParams, paramsMap, i);
             Parameter parameter=params[i];
             needParams[i]=new TypeExecutor().execute(parameter);
         }
         return needParams;
     }
 
-    private static void setProperty(HttpServletRequest req, HttpServletResponse resp, Parameter param, Object[] needParams, Map<String, Object[]> paramsMap, int i) throws IllegalAccessException, InvocationTargetException, InstantiationException {
-        if(param.getType().equals(HttpServletRequest.class)){
-            needParams[i]=req;
-        }else if(param.getType().equals(HttpServletResponse.class)){
-            needParams[i]=resp;
-        }else{
-            Object obj=req.getParameter(param.getName());
-            if(param.getType().isPrimitive() || param.getType().isArray()){
-                //BeanUtil 转换实体类型  ConvertUtils转换常用数据类型（基本数据类型）
-                needParams[i]= ConvertUtils.convert(obj, param.getType());
-            }else{
-                BeanUtils.populate(param.getType().newInstance(),paramsMap);
-            }
-
-        }
-    }
 
 
 }

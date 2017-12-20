@@ -10,11 +10,11 @@ public class ServletAPIConvert implements TypeConvert {
     @Override
     public Object convert(Parameter parameter, TypeExecutor executor) throws InvocationTargetException, InstantiationException, IllegalAccessException {
         if(parameter.getType().equals(HttpServletRequest.class)){
-            return ActionContext.getRequest();
+            return ActionContext.getActionContext().getRequest();
         }else if(parameter.getType().equals(HttpServletResponse.class)){
-            return ActionContext.getResponse();
+            return ActionContext.getActionContext().getResponse();
         }else if(parameter.getType().equals(HttpSession.class)){
-            return ActionContext.getRequest().getSession();
+            return ActionContext.getActionContext().getRequest().getSession();
         }
         return executor.execute(parameter);
     }
