@@ -30,7 +30,6 @@ public class ContentView extends ViewResult{
         msg=new Gson().toJson(obj);
     }
     public void toJsonAndResp(Object obj){
-        msg=new Gson().toJson(obj);
         dealViewResult();
     }
 }

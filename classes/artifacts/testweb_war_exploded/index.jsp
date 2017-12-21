@@ -13,7 +13,9 @@
   <body>
     <form action="login">
       name:<input type="text" name="name" /><br />
-      name2:<input type="text" name="name" /><br />
+      age:<input type="text" name="age" /><br />
+      sex:<input type="text" name="sex" /><br />
+      sex:<input type="text" name="sex" /><br />
       <input type="submit" value="commit">
     </form>
   </body>

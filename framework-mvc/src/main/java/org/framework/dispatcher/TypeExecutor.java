@@ -21,14 +21,11 @@ public class TypeExecutor {
 
     private static ServiceLoader serviceLoader;
 
-//    static {
-//        serviceLoader = ServiceLoader.load(TypeConvert.class);
-//        it= serviceLoader.iterator();
-//    }
 
     public TypeExecutor(){
         serviceLoader = ServiceLoader.load(TypeConvert.class);
         it= serviceLoader.iterator();
+        list.add(it.next());
     }
 
     public Object execute(Parameter parameter) throws InstantiationException, IllegalAccessException, InvocationTargetException {

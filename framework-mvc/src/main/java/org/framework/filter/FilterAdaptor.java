@@ -27,6 +27,8 @@ public class FilterAdaptor {
         return filterInstances;
     }
 
+
+
     /**
      * 创建过滤器实例
      */

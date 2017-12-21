@@ -1,7 +1,11 @@
 package org.framework.filter;
 
+import org.framework.dispatcher.HandlerInvoker;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -24,8 +28,22 @@ public class FilterChain {
     }
 
     public void execute(HttpServletRequest req, HttpServletResponse resp,FilterChain chain){
+
+        if(!it.hasNext()){
+            try {
+                HandlerInvoker.invoker(req,resp);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ServletException e) {
+                e.printStackTrace();
+            }
+        }
+
         while (it.hasNext()){
-            it.next().doFilter(req,resp,this);
+            Filter filter=it.next();
+            filter.init();
+            filter.doFilter(req, resp, chain);
+            filter.destroy();
         }
     }
 

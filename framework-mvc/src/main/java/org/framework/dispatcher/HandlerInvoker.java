@@ -1,9 +1,8 @@
 package org.framework.dispatcher;
 
-import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.beanutils.ConvertUtils;
 
-import javax.servlet.ServletContext;
+import org.framework.view.ViewResult;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,8 +10,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class HandlerInvoker {
@@ -23,13 +20,15 @@ public class HandlerInvoker {
                 (Map<String, HandlerDefinition>) req.getServletContext().getAttribute(RequestDispatcher.CONTEXTMAPING);
         HandlerDefinition definition=requestMap.get(servletPath);
         if(definition!=null){
-            Object[] params=null;
             try {
-                params=parameterConvert(req,resp,definition.getMethod());
-                definition.getMethod().invoke(definition.getClazz().newInstance(),params);
-            }catch (Exception e){
+                Object[] params=parameterConvert(req,resp,definition.getMethod());
+                ViewResult viewResult = (ViewResult) definition.getMethod().invoke(definition.getClazz().newInstance(),params);
+                //对视图结果进行处理
+                executeViewResult(viewResult);
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
+
         }
 
     }
@@ -49,7 +48,14 @@ public class HandlerInvoker {
             Parameter parameter=params[i];
             needParams[i]=new TypeExecutor().execute(parameter);
         }
+
         return needParams;
+    }
+
+    private static void executeViewResult(ViewResult viewResult){
+        if(viewResult!=null){
+            viewResult.dealViewResult();
+        }
     }
 
 
