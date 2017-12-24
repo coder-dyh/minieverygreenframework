@@ -17,46 +17,45 @@ import java.util.Map;
 
 public class RequestDispatcher extends HttpServlet {
 
-    /**
-     * key为请求的URL地址，value为处理请求的类的描述定义
-     */
-    private static Map<String,HandlerDefinition> requestMap=new HashMap<>();
-    /**
-     * 用于存放所有的实现filter接口的所有实现类的class对象
-     */
-    private static List<FilterDefinition> filterList=new ArrayList<>();
+
     /**
      * 用于存放过滤链的过滤顺序的order值
      */
     private static List orderList=new ArrayList();
 
-    protected final static String CONTEXTMAPING="contextMap";
-    protected final static String FILTERLIST="filterList";
-
     @Override
     public void init(ServletConfig config) throws ServletException {
-        config.getServletContext().setAttribute(CONTEXTMAPING,requestMap);
-        config.getServletContext().setAttribute(FILTERLIST,filterList);
-        HandlerMapping handlerMapping=new HandlerMapping();
-        handlerMapping.scan(config);
+        //将一些数据放到上下文对象共享
+        setServletContext(config);
+        //扫描项目
+        new HandlerMapping().scan(config);
     }
+
+    /**
+     * 将一些需要共享的数据设置到上下文作用域中
+     * @param config
+     */
+    private void setServletContext(ServletConfig config){
+        config.getServletContext().setAttribute(ContextInfo.getContextMapping(),ContextInfo.getRequestMap());
+        config.getServletContext().setAttribute(ContextInfo.getFilterListStr(),ContextInfo.getFilterList());
+    }
+
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         setActionContext(req,resp);
 
         //检查该请求是否有相关过滤器拦截
-        List<FilterDefinition> filters=(List<FilterDefinition>) req.getServletContext().getAttribute(FILTERLIST);
+        List<FilterDefinition> filters=(List<FilterDefinition>) req.getServletContext().getAttribute(ContextInfo.CONTEXT_MAPPING);
         List<FilterDefinition> filterDefinitionList=checkFilterMapping(filters);
 
         if(filterDefinitionList!=null && filterDefinitionList.size()>0){
             //如果有过滤器先执行过滤器中的方法
             FilterChain chain=new FilterChain(new FilterAdaptor(filterDefinitionList).getFilterInstances());
             chain.execute(req,resp,chain);
+            HandlerInvoker.invoker();
         }else{
-            if(!req.getServletPath().equals("/favicon.ico")){
-                HandlerInvoker.invoker(req,resp);
-            }
+            HandlerInvoker.invoker();
         }
     }
 
@@ -103,8 +102,6 @@ public class RequestDispatcher extends HttpServlet {
         }
         return list;
     }
-
-
 
 
     @Override

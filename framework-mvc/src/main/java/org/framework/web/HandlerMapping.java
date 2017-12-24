@@ -33,30 +33,39 @@ public class HandlerMapping {
      */
     public void createHandlerDefinition(ServletConfig config, List<String> pathList) throws ClassNotFoundException{
         Map<String,HandlerDefinition> map=
-                (Map<String,HandlerDefinition>)config.getServletContext().getAttribute(RequestDispatcher.CONTEXTMAPING);
+                (Map<String,HandlerDefinition>)config.getServletContext().getAttribute(ContextInfo.CONTEXT_MAPPING);
         List<FilterDefinition> filterList=
-                (List<FilterDefinition>) config.getServletContext().getAttribute(RequestDispatcher.FILTERLIST);
+                (List<FilterDefinition>) config.getServletContext().getAttribute(ContextInfo.FILTER_LIST);
 
         for(String s : pathList){
             HandlerDefinition definition=new HandlerDefinition();
             Class<?> clazz=Class.forName(s);
             //创建过滤器的描述定义
             createFilterDefinition(clazz,filterList);
-            Method[] methods=clazz.getDeclaredMethods();
-            String classAnnotation=getClassAnnotation(clazz);
-            for(Method m : methods){
-                definition.setClazz(clazz);
-                definition.setMethod(m);
-                if(m.isAnnotationPresent(RequestMapping.class)){
-                    String requestMapName=m.getAnnotation(RequestMapping.class).value();
-                    map.put(classAnnotation+requestMapName,definition);
-                }else{
-                    map.put(classAnnotation+"/"+FirstCharToLowerCase.toLowerCaseFirstOne(clazz.getSimpleName()),definition);
-                }
-            }
+            //构建方法的描述定义
+            findRequestMapping(map, definition, clazz);
         }
 
     }
+
+    /**
+     * 找到所有的请求处理的方法并构建这个方法的描述定义
+     * @param map
+     * @param definition
+     * @param clazz
+     */
+    private void findRequestMapping(Map<String, HandlerDefinition> map, HandlerDefinition definition, Class<?> clazz) {
+        Method[] methods=clazz.getDeclaredMethods();
+        String classAnnotation=getClassAnnotation(clazz);
+        for(Method m : methods){
+            definition.setClazz(clazz);
+            definition.setMethod(m);
+            new AnnotationInfo(clazz,m).getAnnotationReqMapping(map,definition,classAnnotation);
+        }
+    }
+
+
+
 
     /**
      * 构建过滤器的描述定义
@@ -69,23 +78,11 @@ public class HandlerMapping {
             String value=null;
             int order=1;
             FilterDefinition fd=new FilterDefinition();
-            if(clazz.getAnnotation(FilterMapping.class).value()!=null){
-                value=clazz.getAnnotation(FilterMapping.class).value();
-                order=clazz.getAnnotation(FilterMapping.class).order();
-            }else{
-                value=FirstCharToLowerCase.toLowerCaseFirstOne(clazz.getSimpleName());
-                order=clazz.getAnnotation(FilterMapping.class).order();
-            }
-            fd.setRequestMapName(value);
-            fd.setOrder(order);
+            new AnnotationInfo(clazz).getFilterDefinition(fd);
             fd.setClazz(clazz);
             filterList.add(fd);
         }
     }
-
-
-
-
 
 
 
