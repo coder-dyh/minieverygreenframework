@@ -31,7 +31,7 @@ public class FilterChain {
 
         if(!it.hasNext()){
             try {
-                HandlerInvoker.invoker(req,resp);
+                HandlerInvoker.invoker();
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ServletException e) {

@@ -6,6 +6,9 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 此类多余，无法兼容macOS和Windows，改用ScanUtil
+ */
 public class Scan {
 
     //获得当前项目的绝对路径

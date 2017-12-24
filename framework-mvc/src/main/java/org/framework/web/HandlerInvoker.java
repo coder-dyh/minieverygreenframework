@@ -35,7 +35,6 @@ public class HandlerInvoker {
         }else{
             DealDefaultServlet.forwardDefaultServlet();
         }
-
     }
 
     private static void executeViewResult(ViewResult viewResult){

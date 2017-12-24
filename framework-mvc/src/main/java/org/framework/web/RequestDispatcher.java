@@ -107,6 +107,14 @@ public class RequestDispatcher extends HttpServlet {
     @Override
     public void destroy() {
         super.destroy();
+        removeActionContext();
+    }
+
+    /**
+     * 销毁ActionContext
+     */
+    public void removeActionContext(){
+        ActionContext.remove();
     }
 
 

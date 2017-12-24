@@ -41,4 +41,12 @@ public class ActionContext {
     public void setServletPath(String servletPath) {
         this.servletPath = servletPath;
     }
+
+    /**
+     * 移除线程副本中的对象
+     */
+    public static void remove(){
+        actionContextThreadLocal.get().remove();
+    }
+
 }
