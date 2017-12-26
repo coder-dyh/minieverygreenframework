@@ -31,6 +31,8 @@ public class RequestDispatcher extends HttpServlet {
         setServletContext(config);
         //扫描项目
         new HandlerMapping().scan(config);
+        DealDefaultServlet.initDefaultServlet(config);
+        setFactory(config);
     }
 
     /**
@@ -53,17 +55,17 @@ public class RequestDispatcher extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         setActionContext(req,resp);
         //检查该请求是否有相关过滤器拦截
-        List<FilterDefinition> filters=(List<FilterDefinition>) req.getServletContext().getAttribute(ContextInfo.CONTEXT_MAPPING);
+        List<FilterDefinition> filters=(List<FilterDefinition>) req.getServletContext().getAttribute(ContextInfo.FILTER_LIST);
         List<FilterDefinition> filterDefinitionList=checkFilterMapping(filters);
 
         if(filterDefinitionList!=null && filterDefinitionList.size()>0){
             //如果有过滤器先执行过滤器中的方法
             FilterChain chain=new FilterChain(new FilterAdaptor(filterDefinitionList).getFilterInstances());
             chain.execute(req,resp,chain);
-            HandlerInvoker.requestInvoker(req);
+            HandlerInvoker.invoker();
 
         }else{
-            HandlerInvoker.requestInvoker(req);
+            HandlerInvoker.invoker();
         }
     }
 

@@ -1,14 +1,11 @@
 package org.framework.integrate;
 
-import org.framework.beans.BeanException;
 import org.framework.beans.BeanFactory;
-import org.framework.integrate.utils.StrUtils;
-import org.framework.web.HandlerDefinition;
 import org.framework.web.factory.MVCFactory;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 
 /**
  * Create by coder_dyh on 2017/12/26
@@ -23,6 +20,11 @@ public class ContextListener implements ServletContextListener{
         String path=servletContextEvent.getServletContext().getInitParameter(SCAN_PACKAGE);
         if(path!=null){
             BeanFactory beanFactory=new BeanFactory(path);
+            Map<String,Object> map=beanFactory.singleton;
+            System.out.println(map.size());
+            for(String s : map.keySet()){
+                System.out.println(map.get(s));
+            }
             MVCFactory factory=new PluginFactory(beanFactory);
             servletContextEvent.getServletContext().setAttribute(PLUGIN_FACTORY,factory);
         }

@@ -19,6 +19,6 @@
     </listener>
     <context-param>
         <param-name>scanPackage</param-name>
-        <param-value>org.framework</param-value>
+        <param-value>org.testweb.servlet</param-value>
     </context-param>
 </web-app>

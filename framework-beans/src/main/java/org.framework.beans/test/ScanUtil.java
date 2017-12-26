@@ -6,9 +6,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.JarURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -18,7 +16,7 @@ import java.util.jar.JarFile;
  */
 public class ScanUtil {
 
-	private static final Set<String> classNames = new HashSet<String>();
+	private static final List<String> classNames = new ArrayList<>();
 
 	/**
 	 * 获取指定包下以及子包中所有的类
@@ -26,7 +24,7 @@ public class ScanUtil {
 	 * @param packageName 包名
 	 * @return 所有的完整类名
 	 */
-	public static Set<String> scan(String packageName) {
+	public static List<String> scan(String packageName) {
 		if(packageName == null){
 			throw new RuntimeException("The path can not be null.");
 		}

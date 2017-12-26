@@ -1,5 +1,7 @@
 package org.framework.beans;
 
+import org.framework.beans.test.ScanUtil;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.beans.IntrospectionException;
@@ -22,13 +24,7 @@ public class BeanFactory {
      * @throws BeanException
      */
     public BeanFactory(String packagePath) {
-        System.out.println("获得的路径："+packagePath);
-        try {
-            analyseClass(packagePath);
-            initSingleton();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        init(packagePath);
     }
 
     public void init(String packagePath){
@@ -52,7 +48,7 @@ public class BeanFactory {
      */
     private static void analyseClass(String packagePath) throws ClassNotFoundException{
         //扫描指定包下面的所有Class文件获得完整类名
-        List<String> list=Scan.scan(packagePath);
+        List<String> list= ScanUtil.scan(packagePath);
         //保存所有的类描述信息
         setDefinition(list);
     }

@@ -16,34 +16,40 @@ import java.util.Map;
 
 public class HandlerInvoker {
 
-    private static Object obj;
-    private static HandlerDefinition definition;
 
-    public static void requestInvoker(HttpServletRequest req) throws IOException,ServletException{
+    public static void invoker() throws IOException,ServletException{
+
+        HttpServletRequest req=ActionContext.getActionContext().getRequest();
         MVCFactory factory=(MVCFactory) req.getServletContext().getAttribute("PluginFactory");
+        HandlerDefinition definition = getDefinition(req);
+        if(definition!=null){
+            Object obj=factory.createInstance(definition);
+            try {
+                Object[] params= TypeConvertUtils.parameterConvert(definition.getMethod());
+                ViewResult viewResult = (ViewResult) definition.getMethod().invoke(obj,params);
+                //对视图结果进行处理
+                executeViewResult(viewResult);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }else{
+            DealDefaultServlet.forwardDefaultServlet(req,ActionContext.getActionContext().getResponse());
+        }
+
+    }
+
+    /**
+     * 获得描述定义
+     * @param req
+     * @return HandlerDefinition
+     */
+    private static HandlerDefinition getDefinition(HttpServletRequest req) {
         Map<String,HandlerDefinition> requestMap=
                 (Map<String, HandlerDefinition>) ActionContext
                         .getActionContext().getRequest()
                         .getServletContext()
                         .getAttribute(ContextInfo.CONTEXT_MAPPING);
-        definition=requestMap.get(req.getServletPath());
-        if(definition!=null){
-            obj=factory.createInstance(definition);
-            invoker();
-        }else{
-            DealDefaultServlet.forwardDefaultServlet();
-        }
-    }
-
-    public static void invoker() throws IOException,ServletException{
-        try {
-            Object[] params= TypeConvertUtils.parameterConvert(definition.getMethod());
-            ViewResult viewResult = (ViewResult) definition.getMethod().invoke(obj,params);
-            //对视图结果进行处理
-            executeViewResult(viewResult);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return requestMap.get(req.getServletPath());
     }
 
     private static void executeViewResult(ViewResult viewResult){
