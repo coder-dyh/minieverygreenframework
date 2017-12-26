@@ -1,5 +1,7 @@
 package org.framework.web;
 
+import org.framework.web.factory.MVCFactory;
+import org.framework.web.factory.impl.WebAppFactory;
 import org.framework.web.filter.FilterAdaptor;
 import org.framework.web.filter.FilterChain;
 
@@ -40,11 +42,16 @@ public class RequestDispatcher extends HttpServlet {
         config.getServletContext().setAttribute(ContextInfo.getFilterListStr(),ContextInfo.getFilterList());
     }
 
+    private void setFactory(ServletConfig config){
+        if(config.getServletContext().getAttribute("PluginFactory")==null){
+            config.getServletContext().setAttribute("PluginFactory",new WebAppFactory());
+        }
+    }
+
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         setActionContext(req,resp);
-
         //检查该请求是否有相关过滤器拦截
         List<FilterDefinition> filters=(List<FilterDefinition>) req.getServletContext().getAttribute(ContextInfo.CONTEXT_MAPPING);
         List<FilterDefinition> filterDefinitionList=checkFilterMapping(filters);
@@ -53,11 +60,15 @@ public class RequestDispatcher extends HttpServlet {
             //如果有过滤器先执行过滤器中的方法
             FilterChain chain=new FilterChain(new FilterAdaptor(filterDefinitionList).getFilterInstances());
             chain.execute(req,resp,chain);
-            HandlerInvoker.invoker();
+            HandlerInvoker.requestInvoker(req);
+
         }else{
-            HandlerInvoker.invoker();
+            HandlerInvoker.requestInvoker(req);
         }
     }
+
+
+
 
 
     /**

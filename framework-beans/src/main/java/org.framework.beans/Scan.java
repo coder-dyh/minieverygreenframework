@@ -18,6 +18,7 @@ public class Scan {
      *
      */
     public static List<String> scan(String packagePath){
+
         packagePath=packagePath.replace(".","/");
         readFile(path+packagePath);
         return list;
@@ -64,7 +65,7 @@ public class Scan {
 
 
     public static void main(String[] args) {
-        scan("org.beans");
+        scan("org/framework/beans");
         System.out.println(list.size());
         for(String s:list){
             System.out.println(s);

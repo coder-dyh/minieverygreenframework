@@ -12,7 +12,7 @@ import java.util.Map;
 public class BeanFactory {
 
     //存放单例容器
-    private static Map<String,Object> singleton=new HashMap<>();
+    public static Map<String,Object> singleton=new HashMap<>();
     //存放类的描述信息
     private static Map<String,Definition> prototype=new HashMap<>();
 
@@ -21,12 +21,23 @@ public class BeanFactory {
      * @param packagePath
      * @throws BeanException
      */
-    public BeanFactory(String packagePath) throws BeanException{
+    public BeanFactory(String packagePath) {
+        System.out.println("获得的路径："+packagePath);
         try {
             analyseClass(packagePath);
             initSingleton();
         } catch (Exception e) {
-            throw new BeanException(e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void init(String packagePath){
+        System.out.println("获得的路径："+packagePath);
+        try {
+            analyseClass(packagePath);
+            initSingleton();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -218,4 +229,11 @@ public class BeanFactory {
         InjectExecutor.executionInject(instance,this);
     }
 
+    public static Map<String, Object> getSingleton() {
+        return singleton;
+    }
+
+    public static void setSingleton(Map<String, Object> singleton) {
+        BeanFactory.singleton = singleton;
+    }
 }

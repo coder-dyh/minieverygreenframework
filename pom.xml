@@ -13,6 +13,7 @@
         <module>framework-dbhelper</module>
         <module>framework-beans</module>
         <module>framework-mvc</module>
+        <module>framework-plugin</module>
     </modules>
 
 

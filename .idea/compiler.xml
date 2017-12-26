@@ -9,6 +9,7 @@
         <module name="framework-beans" />
         <module name="framework-dbhelper" />
         <module name="framework-mvc" />
+        <module name="framework-plugin" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -16,6 +17,7 @@
       <module name="framework-beans" target="1.8" />
       <module name="framework-dbhelper" target="1.8" />
       <module name="framework-mvc" target="1.8" />
+      <module name="framework-plugin" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

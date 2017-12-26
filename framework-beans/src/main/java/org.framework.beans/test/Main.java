@@ -11,7 +11,7 @@ public class Main {
         BeanFactory factory=null;
         try {
             factory=new BeanFactory("org.framework.beans.test");
-        } catch (BeanException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         TestController controller=factory.getBean("testController",TestController.class);

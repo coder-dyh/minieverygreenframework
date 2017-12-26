@@ -7,6 +7,7 @@
         <element id="directory" name="classes">
           <element id="module-output" name="testweb" />
           <element id="module-output" name="framework-mvc" />
+          <element id="module-output" name="framework-plugin" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.38" />

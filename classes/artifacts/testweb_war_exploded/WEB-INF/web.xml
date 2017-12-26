@@ -14,4 +14,11 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     
+    <listener>
+        <listener-class>org.framework.integrate.ContextListener</listener-class>
+    </listener>
+    <context-param>
+        <param-name>scanPackage</param-name>
+        <param-value>org.framework</param-value>
+    </context-param>
 </web-app>
