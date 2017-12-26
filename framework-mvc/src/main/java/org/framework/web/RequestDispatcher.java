@@ -62,8 +62,6 @@ public class RequestDispatcher extends HttpServlet {
             //如果有过滤器先执行过滤器中的方法
             FilterChain chain=new FilterChain(new FilterAdaptor(filterDefinitionList).getFilterInstances());
             chain.execute(req,resp,chain);
-            HandlerInvoker.invoker();
-
         }else{
             HandlerInvoker.invoker();
         }

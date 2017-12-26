@@ -18,7 +18,7 @@ public class HandlerInvoker {
 
 
     public static void invoker() throws IOException,ServletException{
-
+        HttpServletResponse resp=ActionContext.getActionContext().getResponse();
         HttpServletRequest req=ActionContext.getActionContext().getRequest();
         MVCFactory factory=(MVCFactory) req.getServletContext().getAttribute("PluginFactory");
         HandlerDefinition definition = getDefinition(req);
@@ -30,10 +30,10 @@ public class HandlerInvoker {
                 //对视图结果进行处理
                 executeViewResult(viewResult);
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException("MVC execute Method failed");
             }
         }else{
-            DealDefaultServlet.forwardDefaultServlet(req,ActionContext.getActionContext().getResponse());
+            DealDefaultServlet.forwardDefaultServlet(req,resp);
         }
 
     }
