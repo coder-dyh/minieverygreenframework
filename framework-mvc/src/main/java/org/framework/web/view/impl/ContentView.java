@@ -16,6 +16,10 @@ public class ContentView extends ViewResult{
         this.msg=msg;
     }
 
+    public ContentView(Object obj){
+        this.msg=new Gson().toJson(obj);
+    }
+
     @Override
     public void dealViewResult() {
         super.getResponse().setContentType("application/json;charset=utf-8");

@@ -1,6 +1,6 @@
 package org.framework.dbhelper;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.framework.dbhelper.annotation.Column;
 
 import java.lang.reflect.Field;
 import java.sql.ResultSet;

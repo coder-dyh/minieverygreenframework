@@ -19,7 +19,6 @@ import java.util.Map;
 
 public class RequestDispatcher extends HttpServlet {
 
-
     /**
      * 用于存放过滤链的过滤顺序的order值
      */
@@ -29,9 +28,11 @@ public class RequestDispatcher extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         //将一些数据放到上下文对象共享
         setServletContext(config);
-        //扫描项目
+        //扫描项目，并将扫描好的方法的描述定义放到上下文作用域
         new HandlerMapping().scan(config);
+        //初始化处理默认的servlet的方法
         DealDefaultServlet.initDefaultServlet(config);
+        //将工厂放入上下文作用域
         setFactory(config);
     }
 
@@ -44,6 +45,10 @@ public class RequestDispatcher extends HttpServlet {
         config.getServletContext().setAttribute(ContextInfo.getFilterListStr(),ContextInfo.getFilterList());
     }
 
+    /**
+     * 将工厂放入上下文作用域
+     * @param config
+     */
     private void setFactory(ServletConfig config){
         if(config.getServletContext().getAttribute("PluginFactory")==null){
             config.getServletContext().setAttribute("PluginFactory",new WebAppFactory());

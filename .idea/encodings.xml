@@ -6,5 +6,6 @@
     <file url="file://$PROJECT_DIR$/framework-dbhelper" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework-mvc" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework-plugin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../testmaven" charset="UTF-8" />
   </component>
 </project>

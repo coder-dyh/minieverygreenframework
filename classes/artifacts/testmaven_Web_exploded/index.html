@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+
+</head>
+<body>
+    <form class="login_frm">
+        <input type="text" name="userName"><br />
+        <input type="password" name="userPwd"><br />
+    </form>
+    <button class="login_btn">login</button>
+</body>
+    <script>
+        $(".login_btn").on("click",function () {
+            var params=$(".login_frm").serialize();
+            $.ajax({
+                url:"login",
+                data:params,
+                success:function (data) {
+                    if(data.statusCode==200){
+                        alert("欢迎您！用户："+data.value.userName);
+                    }else{
+                        alert(data.message);
+                    }
+                },
+                error:function (data) {
+                    alert("错误页面！");
+                }
+
+            });
+        })
+    </script>
+</html>

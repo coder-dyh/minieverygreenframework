@@ -1,4 +1,4 @@
-package org.framework.dbhelper;
+package org.framework.dbhelper.exception;
 
 public class AccessException extends Exception{
 

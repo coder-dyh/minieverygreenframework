@@ -21,10 +21,6 @@ public class ContextListener implements ServletContextListener{
         if(path!=null){
             BeanFactory beanFactory=new BeanFactory(path);
             Map<String,Object> map=beanFactory.singleton;
-            System.out.println(map.size());
-            for(String s : map.keySet()){
-                System.out.println(map.get(s));
-            }
             MVCFactory factory=new PluginFactory(beanFactory);
             servletContextEvent.getServletContext().setAttribute(PLUGIN_FACTORY,factory);
         }

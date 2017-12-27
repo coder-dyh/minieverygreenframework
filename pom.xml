@@ -21,7 +21,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <argLine>Dfile.encoding=UTF-8</argLine>
-
+        <framework.version>1.0-SNAPSHOT</framework.version>
         <!--setting version-->
 
         <!--<mysql-version>5.1.38</mysql-version>-->
@@ -33,6 +33,7 @@
     <build>
         <!--plugins configuration-->
         <plugins>
+            <!--compile plugin-->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
@@ -42,6 +43,7 @@
                     <compilerArgs>-parameters</compilerArgs>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 

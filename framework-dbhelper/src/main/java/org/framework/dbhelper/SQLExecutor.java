@@ -1,5 +1,9 @@
 package org.framework.dbhelper;
 
+import org.framework.dbhelper.exception.CloseException;
+import org.framework.dbhelper.exception.SQLExecutorException;
+import org.framework.dbhelper.exception.TransactionException;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,26 +22,38 @@ public class SQLExecutor {
      * 开启事务
      * @throws SQLException
      */
-    public void beginTransation() throws SQLException{
+    public void beginTransaction(){
         this.autoClose=false;
         //设置自动提交为false，不让它自动提交事务
-        connection.setAutoCommit(autoClose);
+        try {
+            connection.setAutoCommit(autoClose);
+        } catch (SQLException e) {
+            throw new TransactionException("Begin transaction failed.",e);
+        }
     }
 
     /**
      * 提交事务
      * @throws SQLException
      */
-    public void commit() throws SQLException{
-        connection.commit();
+    public void commit(){
+        try {
+            connection.commit();
+        } catch (SQLException e) {
+            throw new TransactionException("Commit transaction failed.",e);
+        }
     }
 
     /**
      * 回滚事务
      * @throws SQLException
      */
-    public void rollback() throws SQLException{
-        connection.rollback();
+    public void rollback(){
+        try {
+            connection.rollback();
+        } catch (SQLException e) {
+            throw new TransactionException("Rollback transaction failed.",e);
+        }
     }
 
     /**
@@ -48,7 +64,8 @@ public class SQLExecutor {
      * @param <T>
      * @return
      */
-    public <T> T executeQuery(String sql,ResultSetHandler<T> handler,Object...params) throws SQLException{
+    public <T> T executeQuery(String sql,ResultSetHandler<T> handler,Object...params){
+
         PreparedStatement ps=null;
         ResultSet rs=null;
         T t=null;
@@ -58,12 +75,16 @@ public class SQLExecutor {
             rs=ps.executeQuery();
             t=handler.handle(rs);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new SQLExecutorException("Execute query failed.",e);
         } finally {
-            close(rs);
-            close(ps);
-            if(autoClose){
-                close(connection);
+            try {
+                close(rs);
+                close(ps);
+                if(autoClose){
+                    close(connection);
+                }
+            } catch (SQLException e) {
+                throw new SQLExecutorException("Execute query failed.",e);
             }
         }
 
@@ -77,8 +98,7 @@ public class SQLExecutor {
      * @return
      * @throws SQLException
      */
-    public int[] executeBatch(String sql,Object params[][]) throws SQLException{
-        int rows[]=null;
+    public void executeBatch(String sql,Object params[][]){
         PreparedStatement ps=null;
         try {
             ps=connection.prepareStatement(sql);
@@ -86,17 +106,20 @@ public class SQLExecutor {
                 //循环设置参数
                 setParameter(params[i],ps);
             }
-            rows=ps.executeBatch();
+            ps.executeBatch();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new SQLExecutorException("Execute batch failed.",e);
         } finally {
-            close(ps);
-            if(autoClose){
-                close(connection);
+            try {
+                close(ps);
+                if(autoClose){
+                    close(connection);
+                }
+            } catch (SQLException e) {
+                throw new CloseException("close failed.",e);
             }
         }
 
-        return null;
     }
 
     /**
@@ -105,21 +128,22 @@ public class SQLExecutor {
      * @param params
      * @return
      */
-    public int executeUpdate(String sql,Object...params) throws SQLException{
+    public void executeUpdate(String sql,Object...params){
         PreparedStatement ps=null;
         ResultSet rs=null;
-        int rows=0;
         try {
             ps=connection.prepareStatement(sql);
             setParameter(params,ps);
-            rows=ps.executeUpdate();
+            ps.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new SQLExecutorException("Execute update failed.",e);
         } finally {
-            close(ps);
+            try {
+                close(ps);
+            } catch (SQLException e) {
+                throw new CloseException("close failed.",e);
+            }
         }
-
-        return rows;
     }
 
 
@@ -145,22 +169,30 @@ public class SQLExecutor {
      * @return Object 返回一个添加成功后返回添加的那条记录的主键的值
      * @throws SQLException
      */
-    public Object insert(String sql,Object...params) throws SQLException{
-        PreparedStatement ps=connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-        setParameter(params,ps);
-        Object generatedKey=null;
+    public Object insert(String sql,Object...params){
+        PreparedStatement ps= null;
+        Object generatedKey= null;
         try {
+            ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            setParameter(params,ps);
+            generatedKey = null;
+
             ps.executeUpdate();
             ResultSet rs=ps.getGeneratedKeys();
             if(rs.next()){
                 generatedKey=rs.getObject(1);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            close(ps);
-            if(autoClose){
-                close(connection);
+            throw new SQLExecutorException("Execute insert failed.",e);
+        }
+         finally {
+            try {
+                close(ps);
+                if(autoClose){
+                    close(connection);
+                }
+            } catch (SQLException e) {
+                throw new CloseException("close failed",e);
             }
         }
         return generatedKey;
@@ -173,26 +205,33 @@ public class SQLExecutor {
      * @return Object[] 返回一个包含所有主键的值Object[]数组
      * @throws SQLException
      */
-    public Object[] insertBatch(String sql,Object params[][]) throws SQLException{
-        PreparedStatement ps=connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-        ResultSet rs=null;
+    public Object[] insertBatch(String sql,Object params[][]){
+        PreparedStatement ps=null;
         List generatedKeys=new ArrayList();
-        for(int i=0;i<params.length;i++){
-            setParameter(params[i],ps);
-            ps.addBatch();
-        }
         try {
+            ps=connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs=null;
+
+            for(int i=0;i<params.length;i++){
+                setParameter(params[i],ps);
+                ps.addBatch();
+            }
+
             ps.executeBatch();
             rs=ps.getGeneratedKeys();
             while (rs.next()){
                 generatedKeys.add(rs.getObject(1));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new SQLExecutorException("Execute insertBatch failed.",e);
         } finally {
-            close(ps);
-            if (autoClose){
-                close(connection);
+            try {
+                close(ps);
+                if (autoClose){
+                    close(connection);
+                }
+            } catch (SQLException e) {
+                throw new CloseException("Close failed.",e);
             }
         }
 

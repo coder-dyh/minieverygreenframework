@@ -28,7 +28,6 @@ public class BeanFactory {
     }
 
     public void init(String packagePath){
-        System.out.println("获得的路径："+packagePath);
         try {
             analyseClass(packagePath);
             initSingleton();

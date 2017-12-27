@@ -4,6 +4,7 @@ import org.framework.web.factory.MVCFactory;
 import org.framework.web.factory.impl.WebAppFactory;
 import org.framework.web.utils.TypeConvertUtils;
 import org.framework.web.view.ViewResult;
+import org.framework.web.view.impl.DefaultView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,19 +17,19 @@ import java.util.Map;
 
 public class HandlerInvoker {
 
-
     public static void invoker() throws IOException,ServletException{
         HttpServletResponse resp=ActionContext.getActionContext().getResponse();
         HttpServletRequest req=ActionContext.getActionContext().getRequest();
         MVCFactory factory=(MVCFactory) req.getServletContext().getAttribute("PluginFactory");
+        //获得描述定义
         HandlerDefinition definition = getDefinition(req);
         if(definition!=null){
             Object obj=factory.createInstance(definition);
             try {
                 Object[] params= TypeConvertUtils.parameterConvert(definition.getMethod());
-                ViewResult viewResult = (ViewResult) definition.getMethod().invoke(obj,params);
+                Object viewResult = (ViewResult) definition.getMethod().invoke(obj,params);
                 //对视图结果进行处理
-                executeViewResult(viewResult);
+                RespHandler.executeViewResult(viewResult);
             } catch (Exception e) {
                 throw new RuntimeException("MVC execute Method failed");
             }
@@ -52,9 +53,5 @@ public class HandlerInvoker {
         return requestMap.get(req.getServletPath());
     }
 
-    private static void executeViewResult(ViewResult viewResult){
-        if(viewResult!=null){
-            viewResult.dealViewResult();
-        }
-    }
+
 }
