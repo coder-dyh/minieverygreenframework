@@ -6,14 +6,15 @@
 
     <groupId>org.minisun</groupId>
     <artifactId>framework</artifactId>
-    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    
+    <packaging>pom</packaging>
+
     <modules>
         <module>framework-dbhelper</module>
         <module>framework-beans</module>
         <module>framework-mvc</module>
         <module>framework-plugin</module>
+        <module>framework-aop</module>
     </modules>
 
 
