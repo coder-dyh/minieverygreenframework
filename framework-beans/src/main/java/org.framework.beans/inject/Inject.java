@@ -1,4 +1,4 @@
-package org.framework.beans.Inf;
+package org.framework.beans.inject;
 
 import org.framework.beans.BeanFactory;
 

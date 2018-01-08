@@ -1,11 +1,11 @@
-package org.framework.beans;
+package org.framework.beans.inject.impl;
 
+import org.framework.beans.BeanFactory;
+import org.framework.beans.annotation.Inject;
 
-import java.beans.IntrospectionException;
 import java.lang.reflect.Field;
 
-public class PropertyInject implements org.framework.beans.Inf.Inject{
-
+public class PropertyInject implements org.framework.beans.inject.Inject {
 
     @Override
     public void inject(Object target, BeanFactory beanFactory) throws IllegalAccessException{
@@ -27,7 +27,9 @@ public class PropertyInject implements org.framework.beans.Inf.Inject{
             field.setAccessible(true);
             if(field.isAnnotationPresent(Inject.class)){
                 injectName=field.getAnnotation(Inject.class).name();
+                //从容器中取出对应的实现类
                 obj=beanFactory.getBean(injectName);
+                //给属性赋值参数：（实例，参数值）
                 field.set(target,obj);
                 analyseField(obj,beanFactory);
             }

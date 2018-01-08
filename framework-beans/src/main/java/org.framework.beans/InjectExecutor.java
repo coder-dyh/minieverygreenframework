@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ServiceLoader;
-import org.framework.beans.Inf.Inject;
+import org.framework.beans.inject.Inject;
 
 /**
  * 注入执行器
@@ -48,6 +48,10 @@ public class InjectExecutor {
         for(Inject inject : ins){
             inject.inject(target,beanFactory);
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(ins.size());
     }
 
 

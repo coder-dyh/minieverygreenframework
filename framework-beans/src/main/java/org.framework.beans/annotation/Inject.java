@@ -1,4 +1,4 @@
-package org.framework.beans;
+package org.framework.beans.annotation;
 
 
 import java.lang.annotation.ElementType;

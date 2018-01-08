@@ -1,6 +1,5 @@
 package org.framework.beans.test;
 
-import org.framework.beans.BeanException;
 import org.framework.beans.BeanFactory;
 
 import java.lang.reflect.InvocationTargetException;
@@ -16,6 +15,7 @@ public class Main {
         }
         TestController controller=factory.getBean("testController",TestController.class);
         controller.saveUserController();
+        controller.updateController();
         try {
             factory.close();
         } catch (IllegalAccessException e) {

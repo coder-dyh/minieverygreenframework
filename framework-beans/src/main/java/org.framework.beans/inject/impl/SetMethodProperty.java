@@ -1,6 +1,9 @@
-package org.framework.beans;
+package org.framework.beans.inject.impl;
 
 
+
+import org.framework.beans.BeanFactory;
+import org.framework.beans.annotation.Inject;
 
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
@@ -9,7 +12,7 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class SetMethodProperty implements org.framework.beans.Inf.Inject{
+public class SetMethodProperty implements org.framework.beans.inject.Inject {
 
     @Override
     public void inject(Object target, BeanFactory beanFactory)

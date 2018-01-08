@@ -1,8 +1,8 @@
 package org.framework.beans.test;
 
-import org.framework.beans.Component;
-import org.framework.beans.Inject;
-import org.framework.beans.Scope;
+import org.framework.beans.annotation.Component;
+import org.framework.beans.annotation.Inject;
+import org.framework.beans.annotation.Scope;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -14,6 +14,9 @@ public class TestController {
     @Inject(name = "testService")
     private TestService testService;
 
+    @Inject(name = "updateService")
+    private UpdateService updateService;
+
     @PostConstruct
     public void init(){
         System.out.println("在容器初始化之前进行了一些操作");
@@ -21,6 +24,10 @@ public class TestController {
 
     public void saveUserController(){
         testService.saveUserService();
+    }
+
+    public void updateController(){
+        updateService.updateUserService();
     }
 
     @PreDestroy

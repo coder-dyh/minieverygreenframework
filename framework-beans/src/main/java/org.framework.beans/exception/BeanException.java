@@ -1,4 +1,4 @@
-package org.framework.beans;
+package org.framework.beans.exception;
 
 public class BeanException extends Exception {
 

@@ -1,0 +1,2 @@
+org.framework.beans.inject.impl.PropertyInject
+org.framework.beans.inject.impl.SetMethodProperty

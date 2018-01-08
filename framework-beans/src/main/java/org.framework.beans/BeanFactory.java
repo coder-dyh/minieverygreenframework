@@ -1,5 +1,10 @@
 package org.framework.beans;
 
+import org.framework.beans.annotation.Component;
+import org.framework.beans.annotation.Inject;
+import org.framework.beans.annotation.Scope;
+import org.framework.beans.exception.BeanException;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.beans.IntrospectionException;
@@ -22,9 +27,14 @@ public class BeanFactory {
      * @throws BeanException
      */
     public BeanFactory(String packagePath) {
+        //初始化单例和原型容器
         init(packagePath);
     }
 
+    /**
+     * 扫描包获取类的描述信息，初始化单例容器
+     * @param packagePath
+     */
     public void init(String packagePath){
         try {
             analyseClass(packagePath);
@@ -77,7 +87,7 @@ public class BeanFactory {
     }
 
     /**
-     * 保存类的描述定义信息
+     * 保存类的描述定义信息,初始化原型容器
      * @param list
      * @throws ClassNotFoundException
      */
@@ -97,15 +107,16 @@ public class BeanFactory {
 
                 if(clazz.isAnnotationPresent(Scope.class)){
                     scope=clazz.getAnnotation(Scope.class).value();
-                    if(scope!=null){
-                        definition.setScope(scope);
-                    }else{
+                    if(scope == null || "singleton".equals(scope)){
                         definition.setScope("singleton");
+                    }else{
+                        definition.setScope("prototype");
                     }
                 }
                 if(clazz.isAnnotationPresent(Inject.class)){
                     definition.setInjectName(clazz.getAnnotation(Inject.class).name());
                 }
+                //将初始化方法和销毁方法放入类的描述定义
                 ergodicMethod(clazz,definition);
                 definition.setClazz(clazz);
                 prototype.put(componentName,definition);

@@ -2,7 +2,7 @@ package org.framework.integrate;
 
 
 import org.framework.beans.BeanFactory;
-import org.framework.beans.Component;
+import org.framework.beans.annotation.Component;
 import org.framework.web.HandlerDefinition;
 import org.framework.web.factory.MVCFactory;
 import org.framework.web.utils.FirstCharToLowerCase;
