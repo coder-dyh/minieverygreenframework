@@ -1,4 +1,4 @@
-package org.framework.beans.test;
+package org.framework.beans;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import java.util.jar.JarFile;
 
 /**
  * class扫描工具
- * Created by wangl on 2017/7/6.
+ * Created by coder_dyh on 2017/7/6.
  */
 public class ScanUtil {
 

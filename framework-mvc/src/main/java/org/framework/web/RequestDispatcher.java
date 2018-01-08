@@ -122,7 +122,6 @@ public class RequestDispatcher extends HttpServlet {
 
     @Override
     public void destroy() {
-        super.destroy();
         removeActionContext();
     }
 

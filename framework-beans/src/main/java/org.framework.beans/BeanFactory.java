@@ -1,7 +1,5 @@
 package org.framework.beans;
 
-import org.framework.beans.test.ScanUtil;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.beans.IntrospectionException;

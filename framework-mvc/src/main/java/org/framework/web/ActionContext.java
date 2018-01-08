@@ -46,7 +46,7 @@ public class ActionContext {
      * 移除线程副本中的对象
      */
     public static void remove(){
-        actionContextThreadLocal.get().remove();
+        actionContextThreadLocal.remove();
     }
 
 }
